@@ -36,7 +36,7 @@ passport.use(new ResourceOwnerPasswordStrategy(
         if (!user) { return done(null, false); }
         if (hashsum(user.salt + password) !== user.secret) { return done(null, false); }
 
-        return done(null, { client: client, user: user });
+        return done(null, client, user, info);
       })
     });
   }
